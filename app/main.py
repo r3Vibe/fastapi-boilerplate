@@ -37,6 +37,7 @@ app = FastAPI(
     lifespan=lifespan,
 )
 
+
 # cors policy
 origins = [
     "http://localhost",

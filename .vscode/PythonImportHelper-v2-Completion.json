@@ -96,6 +96,24 @@
         "documentation": {}
     },
     {
+        "label": "logging",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "logging",
+        "description": "logging",
+        "detail": "logging",
+        "documentation": {}
+    },
+    {
+        "label": "sys",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "sys",
+        "description": "sys",
+        "detail": "sys",
+        "documentation": {}
+    },
+    {
         "label": "asynccontextmanager",
         "importPath": "contextlib",
         "description": "contextlib",
@@ -141,41 +159,6 @@
         "description": "app.routers",
         "isExtraImport": true,
         "detail": "app.routers",
-        "documentation": {}
-    },
-    {
-        "label": "annotations",
-        "importPath": "__future__",
-        "description": "__future__",
-        "isExtraImport": true,
-        "detail": "__future__",
-        "documentation": {}
-    },
-    {
-        "label": "os",
-        "kind": 6,
-        "isExtraImport": true,
-        "importPath": "os",
-        "description": "os",
-        "detail": "os",
-        "documentation": {}
-    },
-    {
-        "label": "site",
-        "kind": 6,
-        "isExtraImport": true,
-        "importPath": "site",
-        "description": "site",
-        "detail": "site",
-        "documentation": {}
-    },
-    {
-        "label": "sys",
-        "kind": 6,
-        "isExtraImport": true,
-        "importPath": "sys",
-        "description": "sys",
-        "detail": "sys",
         "documentation": {}
     },
     {
@@ -233,6 +216,51 @@
         "documentation": {}
     },
     {
+        "label": "logger",
+        "kind": 5,
+        "importPath": "app.utils.logger",
+        "description": "app.utils.logger",
+        "peekOfCode": "logger = logging.getLogger()\n# create format\nformat = logging.Formatter(fmt=\"%(levelname)s: %(asctime)s - %(message)s\")\n# create handlers\nstream_handler = logging.StreamHandler(sys.stdout)\nfile_handler = logging.FileHandler(\"app.log\")\n# set formatter\nstream_handler.setFormatter(format)\nfile_handler.setFormatter(format)\n# add the handlers to the logger",
+        "detail": "app.utils.logger",
+        "documentation": {}
+    },
+    {
+        "label": "format",
+        "kind": 5,
+        "importPath": "app.utils.logger",
+        "description": "app.utils.logger",
+        "peekOfCode": "format = logging.Formatter(fmt=\"%(levelname)s: %(asctime)s - %(message)s\")\n# create handlers\nstream_handler = logging.StreamHandler(sys.stdout)\nfile_handler = logging.FileHandler(\"app.log\")\n# set formatter\nstream_handler.setFormatter(format)\nfile_handler.setFormatter(format)\n# add the handlers to the logger\nlogger.handlers = [stream_handler, file_handler]\n# set level",
+        "detail": "app.utils.logger",
+        "documentation": {}
+    },
+    {
+        "label": "stream_handler",
+        "kind": 5,
+        "importPath": "app.utils.logger",
+        "description": "app.utils.logger",
+        "peekOfCode": "stream_handler = logging.StreamHandler(sys.stdout)\nfile_handler = logging.FileHandler(\"app.log\")\n# set formatter\nstream_handler.setFormatter(format)\nfile_handler.setFormatter(format)\n# add the handlers to the logger\nlogger.handlers = [stream_handler, file_handler]\n# set level\nlogger.setLevel(logging.INFO)",
+        "detail": "app.utils.logger",
+        "documentation": {}
+    },
+    {
+        "label": "file_handler",
+        "kind": 5,
+        "importPath": "app.utils.logger",
+        "description": "app.utils.logger",
+        "peekOfCode": "file_handler = logging.FileHandler(\"app.log\")\n# set formatter\nstream_handler.setFormatter(format)\nfile_handler.setFormatter(format)\n# add the handlers to the logger\nlogger.handlers = [stream_handler, file_handler]\n# set level\nlogger.setLevel(logging.INFO)",
+        "detail": "app.utils.logger",
+        "documentation": {}
+    },
+    {
+        "label": "logger.handlers",
+        "kind": 5,
+        "importPath": "app.utils.logger",
+        "description": "app.utils.logger",
+        "peekOfCode": "logger.handlers = [stream_handler, file_handler]\n# set level\nlogger.setLevel(logging.INFO)",
+        "detail": "app.utils.logger",
+        "documentation": {}
+    },
+    {
         "label": "app",
         "kind": 5,
         "importPath": "app.main",
@@ -257,87 +285,6 @@
         "description": "app.main",
         "peekOfCode": "templates = Jinja2Templates(directory=\"app/templates\")\n@app.get(\"/\", response_class=HTMLResponse, include_in_schema=False)\nasync def root(request: Request):\n    \"\"\"set the root to show a html welcome page\"\"\"\n    return templates.TemplateResponse(request=request, name=\"index.html\")\n# include all the other api endpoints\napp.include_router(routes.router)",
         "detail": "app.main",
-        "documentation": {}
-    },
-    {
-        "label": "bin_dir",
-        "kind": 5,
-        "importPath": "env.Scripts.activate_this",
-        "description": "env.Scripts.activate_this",
-        "peekOfCode": "bin_dir = os.path.dirname(abs_file)\nbase = bin_dir[: -len(\"Scripts\") - 1]  # strip away the bin part from the __file__, plus the path separator\n# prepend bin to PATH (this file is inside the bin directory)\nos.environ[\"PATH\"] = os.pathsep.join([bin_dir, *os.environ.get(\"PATH\", \"\").split(os.pathsep)])\nos.environ[\"VIRTUAL_ENV\"] = base  # virtual env is right above bin directory\nos.environ[\"VIRTUAL_ENV_PROMPT\"] = \"\" or os.path.basename(base)  # noqa: SIM222\n# add the virtual environments libraries to the host python import mechanism\nprev_length = len(sys.path)\nfor lib in \"..\\\\Lib\\\\site-packages\".split(os.pathsep):\n    path = os.path.realpath(os.path.join(bin_dir, lib))",
-        "detail": "env.Scripts.activate_this",
-        "documentation": {}
-    },
-    {
-        "label": "base",
-        "kind": 5,
-        "importPath": "env.Scripts.activate_this",
-        "description": "env.Scripts.activate_this",
-        "peekOfCode": "base = bin_dir[: -len(\"Scripts\") - 1]  # strip away the bin part from the __file__, plus the path separator\n# prepend bin to PATH (this file is inside the bin directory)\nos.environ[\"PATH\"] = os.pathsep.join([bin_dir, *os.environ.get(\"PATH\", \"\").split(os.pathsep)])\nos.environ[\"VIRTUAL_ENV\"] = base  # virtual env is right above bin directory\nos.environ[\"VIRTUAL_ENV_PROMPT\"] = \"\" or os.path.basename(base)  # noqa: SIM222\n# add the virtual environments libraries to the host python import mechanism\nprev_length = len(sys.path)\nfor lib in \"..\\\\Lib\\\\site-packages\".split(os.pathsep):\n    path = os.path.realpath(os.path.join(bin_dir, lib))\n    site.addsitedir(path.decode(\"utf-8\") if \"\" else path)",
-        "detail": "env.Scripts.activate_this",
-        "documentation": {}
-    },
-    {
-        "label": "os.environ[\"PATH\"]",
-        "kind": 5,
-        "importPath": "env.Scripts.activate_this",
-        "description": "env.Scripts.activate_this",
-        "peekOfCode": "os.environ[\"PATH\"] = os.pathsep.join([bin_dir, *os.environ.get(\"PATH\", \"\").split(os.pathsep)])\nos.environ[\"VIRTUAL_ENV\"] = base  # virtual env is right above bin directory\nos.environ[\"VIRTUAL_ENV_PROMPT\"] = \"\" or os.path.basename(base)  # noqa: SIM222\n# add the virtual environments libraries to the host python import mechanism\nprev_length = len(sys.path)\nfor lib in \"..\\\\Lib\\\\site-packages\".split(os.pathsep):\n    path = os.path.realpath(os.path.join(bin_dir, lib))\n    site.addsitedir(path.decode(\"utf-8\") if \"\" else path)\nsys.path[:] = sys.path[prev_length:] + sys.path[0:prev_length]\nsys.real_prefix = sys.prefix",
-        "detail": "env.Scripts.activate_this",
-        "documentation": {}
-    },
-    {
-        "label": "os.environ[\"VIRTUAL_ENV\"]",
-        "kind": 5,
-        "importPath": "env.Scripts.activate_this",
-        "description": "env.Scripts.activate_this",
-        "peekOfCode": "os.environ[\"VIRTUAL_ENV\"] = base  # virtual env is right above bin directory\nos.environ[\"VIRTUAL_ENV_PROMPT\"] = \"\" or os.path.basename(base)  # noqa: SIM222\n# add the virtual environments libraries to the host python import mechanism\nprev_length = len(sys.path)\nfor lib in \"..\\\\Lib\\\\site-packages\".split(os.pathsep):\n    path = os.path.realpath(os.path.join(bin_dir, lib))\n    site.addsitedir(path.decode(\"utf-8\") if \"\" else path)\nsys.path[:] = sys.path[prev_length:] + sys.path[0:prev_length]\nsys.real_prefix = sys.prefix\nsys.prefix = base",
-        "detail": "env.Scripts.activate_this",
-        "documentation": {}
-    },
-    {
-        "label": "os.environ[\"VIRTUAL_ENV_PROMPT\"]",
-        "kind": 5,
-        "importPath": "env.Scripts.activate_this",
-        "description": "env.Scripts.activate_this",
-        "peekOfCode": "os.environ[\"VIRTUAL_ENV_PROMPT\"] = \"\" or os.path.basename(base)  # noqa: SIM222\n# add the virtual environments libraries to the host python import mechanism\nprev_length = len(sys.path)\nfor lib in \"..\\\\Lib\\\\site-packages\".split(os.pathsep):\n    path = os.path.realpath(os.path.join(bin_dir, lib))\n    site.addsitedir(path.decode(\"utf-8\") if \"\" else path)\nsys.path[:] = sys.path[prev_length:] + sys.path[0:prev_length]\nsys.real_prefix = sys.prefix\nsys.prefix = base",
-        "detail": "env.Scripts.activate_this",
-        "documentation": {}
-    },
-    {
-        "label": "prev_length",
-        "kind": 5,
-        "importPath": "env.Scripts.activate_this",
-        "description": "env.Scripts.activate_this",
-        "peekOfCode": "prev_length = len(sys.path)\nfor lib in \"..\\\\Lib\\\\site-packages\".split(os.pathsep):\n    path = os.path.realpath(os.path.join(bin_dir, lib))\n    site.addsitedir(path.decode(\"utf-8\") if \"\" else path)\nsys.path[:] = sys.path[prev_length:] + sys.path[0:prev_length]\nsys.real_prefix = sys.prefix\nsys.prefix = base",
-        "detail": "env.Scripts.activate_this",
-        "documentation": {}
-    },
-    {
-        "label": "sys.path[:]",
-        "kind": 5,
-        "importPath": "env.Scripts.activate_this",
-        "description": "env.Scripts.activate_this",
-        "peekOfCode": "sys.path[:] = sys.path[prev_length:] + sys.path[0:prev_length]\nsys.real_prefix = sys.prefix\nsys.prefix = base",
-        "detail": "env.Scripts.activate_this",
-        "documentation": {}
-    },
-    {
-        "label": "sys.real_prefix",
-        "kind": 5,
-        "importPath": "env.Scripts.activate_this",
-        "description": "env.Scripts.activate_this",
-        "peekOfCode": "sys.real_prefix = sys.prefix\nsys.prefix = base",
-        "detail": "env.Scripts.activate_this",
-        "documentation": {}
-    },
-    {
-        "label": "sys.prefix",
-        "kind": 5,
-        "importPath": "env.Scripts.activate_this",
-        "description": "env.Scripts.activate_this",
-        "peekOfCode": "sys.prefix = base",
-        "detail": "env.Scripts.activate_this",
         "documentation": {}
     }
 ]
