@@ -96,6 +96,14 @@
         "documentation": {}
     },
     {
+        "label": "settings",
+        "importPath": "app.config.settings",
+        "description": "app.config.settings",
+        "isExtraImport": true,
+        "detail": "app.config.settings",
+        "documentation": {}
+    },
+    {
         "label": "Users",
         "importPath": "app.models.user_model",
         "description": "app.models.user_model",
@@ -109,6 +117,15 @@
         "description": "app.models.user_model",
         "isExtraImport": true,
         "detail": "app.models.user_model",
+        "documentation": {}
+    },
+    {
+        "label": "os",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "os",
+        "description": "os",
+        "detail": "os",
         "documentation": {}
     },
     {
@@ -184,6 +201,14 @@
         "documentation": {}
     },
     {
+        "label": "status",
+        "importPath": "fastapi",
+        "description": "fastapi",
+        "isExtraImport": true,
+        "detail": "fastapi",
+        "documentation": {}
+    },
+    {
         "label": "FastAPI",
         "importPath": "fastapi",
         "description": "fastapi",
@@ -242,6 +267,64 @@
         "documentation": {}
     },
     {
+        "label": "pytest_asyncio",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "pytest_asyncio",
+        "description": "pytest_asyncio",
+        "detail": "pytest_asyncio",
+        "documentation": {}
+    },
+    {
+        "label": "AsyncClient",
+        "importPath": "httpx",
+        "description": "httpx",
+        "isExtraImport": true,
+        "detail": "httpx",
+        "documentation": {}
+    },
+    {
+        "label": "AsyncClient",
+        "importPath": "httpx",
+        "description": "httpx",
+        "isExtraImport": true,
+        "detail": "httpx",
+        "documentation": {}
+    },
+    {
+        "label": "app",
+        "importPath": "app.main",
+        "description": "app.main",
+        "isExtraImport": true,
+        "detail": "app.main",
+        "documentation": {}
+    },
+    {
+        "label": "LifespanManager",
+        "importPath": "asgi_lifespan",
+        "description": "asgi_lifespan",
+        "isExtraImport": true,
+        "detail": "asgi_lifespan",
+        "documentation": {}
+    },
+    {
+        "label": "get_db",
+        "importPath": "app.database.db",
+        "description": "app.database.db",
+        "isExtraImport": true,
+        "detail": "app.database.db",
+        "documentation": {}
+    },
+    {
+        "label": "pytest",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "pytest",
+        "description": "pytest",
+        "detail": "pytest",
+        "documentation": {}
+    },
+    {
         "label": "asynccontextmanager",
         "importPath": "contextlib",
         "description": "contextlib",
@@ -294,7 +377,7 @@
         "kind": 6,
         "importPath": "app.config.settings",
         "description": "app.config.settings",
-        "peekOfCode": "class Settings(BaseSettings):\n    \"\"\"get the data from the .env file\"\"\"\n    DB_URL: str = Field(validation_alias=\"DB_URL\")\n    DB_NAME: str = Field(validation_alias=\"DB_NAME\")\n    class Config:\n        env_file = \".env\"\n\"\"\" initialize the settings \"\"\"\nsettings = Settings()",
+        "peekOfCode": "class Settings(BaseSettings):\n    \"\"\"get the data from the .env file\"\"\"\n    DB_URL: str = Field(validation_alias=\"DB_URL\")\n    DB_NAME: str = Field(validation_alias=\"DB_NAME\")\n    TEST_MODE: bool = Field(validate_alias=\"TEST_MODE\")\n    class Config:\n        env_file = \".env\"\n\"\"\" initialize the settings \"\"\"\nsettings = Settings()",
         "detail": "app.config.settings",
         "documentation": {}
     },
@@ -402,7 +485,7 @@
         "kind": 5,
         "importPath": "app.main",
         "description": "app.main",
-        "peekOfCode": "app = FastAPI(\n    title=\"Boilerplate\",\n    summary=\"FastApi boilerplate for all project\",\n    description=\"\"\"\n    FastApi boilerplate that will include basic structure and authentication\n    \"\"\",\n    version=\"0.0.6\",\n    servers=[\n        {\n            \"url\": \"http://127.0.0.1:8000/api/v1\",",
+        "peekOfCode": "app = FastAPI(\n    title=\"Boilerplate\",\n    summary=\"Starting Place For FastApi Projects.\",\n    description=\"\"\"\n    # FastApi Boilerplate\n    \"\"\",\n    version=\"0.0.7\",\n    servers=[\n        {\n            \"url\": \"http://127.0.0.1:8000/api/v1\",",
         "detail": "app.main",
         "documentation": {}
     },

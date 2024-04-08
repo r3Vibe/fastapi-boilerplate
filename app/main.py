@@ -14,18 +14,21 @@ async def lifespan(app: FastAPI):
     """on startup we will initialize our database"""
     from app.database.db import get_db
 
-    await get_db()
+    # connect to db during startup
+    client = await get_db()
     yield
+    # close conn after app close
+    client.close()
 
 
 """ initialize app with openapi configurations """
 app = FastAPI(
     title="Boilerplate",
-    summary="FastApi boilerplate for all project",
+    summary="Starting Place For FastApi Projects.",
     description="""
-    FastApi boilerplate that will include basic structure and authentication
+    # FastApi Boilerplate
     """,
-    version="0.0.6",
+    version="0.0.7",
     servers=[
         {
             "url": "http://127.0.0.1:8000/api/v1",

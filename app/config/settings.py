@@ -9,6 +9,7 @@ class Settings(BaseSettings):
 
     DB_URL: str = Field(validation_alias="DB_URL")
     DB_NAME: str = Field(validation_alias="DB_NAME")
+    TEST_MODE: bool = Field(validate_alias="TEST_MODE")
 
     class Config:
         env_file = ".env"

@@ -6,6 +6,8 @@ name = "pypi"
 [packages]
 fastapi = {extras = ["all"], version = "*"}
 beanie = "*"
+pytest-asyncio = "*"
+asgi-lifespan = "*"
 
 [dev-packages]
 
