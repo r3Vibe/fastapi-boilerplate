@@ -3,6 +3,7 @@
 from beanie import init_beanie
 from motor.motor_asyncio import AsyncIOMotorClient
 from app.config.settings import settings
+from app.models.user_model import Users
 
 
 async def get_db():
@@ -10,4 +11,5 @@ async def get_db():
     client = AsyncIOMotorClient(settings.DB_URL)
 
     # Initialize beanie with the Sample document class and a database
-    await init_beanie(database=client[settings.DB_NAME], document_models=[])
+    await init_beanie(database=client[settings.DB_NAME],
+                      document_models=[Users])

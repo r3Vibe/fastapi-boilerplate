@@ -5,12 +5,15 @@ be defined here
 """
 
 from fastapi import APIRouter
+from app.schemas.users import UserRegistration
+from app.operations import users
 
 """ initialize the router """
 router = APIRouter(prefix="/auth", tags=["Authentication"])
 
 
-@router.get("/test")
-def test():
-    """this is to test if the api is working"""
-    return "ok"
+@router.post("/register")
+async def register_user(user: UserRegistration):
+    """create user endpoint"""
+    new_user = await users.create_user(user.model_dump())
+    return new_user

@@ -16,7 +16,63 @@
         "documentation": {}
     },
     {
+        "label": "Field",
+        "importPath": "pydantic",
+        "description": "pydantic",
+        "isExtraImport": true,
+        "detail": "pydantic",
+        "documentation": {}
+    },
+    {
+        "label": "EmailStr",
+        "importPath": "pydantic",
+        "description": "pydantic",
+        "isExtraImport": true,
+        "detail": "pydantic",
+        "documentation": {}
+    },
+    {
+        "label": "BaseModel",
+        "importPath": "pydantic",
+        "description": "pydantic",
+        "isExtraImport": true,
+        "detail": "pydantic",
+        "documentation": {}
+    },
+    {
+        "label": "Field",
+        "importPath": "pydantic",
+        "description": "pydantic",
+        "isExtraImport": true,
+        "detail": "pydantic",
+        "documentation": {}
+    },
+    {
+        "label": "EmailStr",
+        "importPath": "pydantic",
+        "description": "pydantic",
+        "isExtraImport": true,
+        "detail": "pydantic",
+        "documentation": {}
+    },
+    {
         "label": "init_beanie",
+        "importPath": "beanie",
+        "description": "beanie",
+        "isExtraImport": true,
+        "detail": "beanie",
+        "documentation": {}
+    },
+    {
+        "label": "Document",
+        "importPath": "beanie",
+        "description": "beanie",
+        "isExtraImport": true,
+        "detail": "beanie",
+        "documentation": {}
+    },
+    {
+        "label": "Indexed",
         "importPath": "beanie",
         "description": "beanie",
         "isExtraImport": true,
@@ -37,6 +93,70 @@
         "description": "app.config.settings",
         "isExtraImport": true,
         "detail": "app.config.settings",
+        "documentation": {}
+    },
+    {
+        "label": "Users",
+        "importPath": "app.models.user_model",
+        "description": "app.models.user_model",
+        "isExtraImport": true,
+        "detail": "app.models.user_model",
+        "documentation": {}
+    },
+    {
+        "label": "Users",
+        "importPath": "app.models.user_model",
+        "description": "app.models.user_model",
+        "isExtraImport": true,
+        "detail": "app.models.user_model",
+        "documentation": {}
+    },
+    {
+        "label": "datetime",
+        "importPath": "datetime",
+        "description": "datetime",
+        "isExtraImport": true,
+        "detail": "datetime",
+        "documentation": {}
+    },
+    {
+        "label": "UUID",
+        "importPath": "uuid",
+        "description": "uuid",
+        "isExtraImport": true,
+        "detail": "uuid",
+        "documentation": {}
+    },
+    {
+        "label": "uuid4",
+        "importPath": "uuid",
+        "description": "uuid",
+        "isExtraImport": true,
+        "detail": "uuid",
+        "documentation": {}
+    },
+    {
+        "label": "Annotated",
+        "importPath": "typing",
+        "description": "typing",
+        "isExtraImport": true,
+        "detail": "typing",
+        "documentation": {}
+    },
+    {
+        "label": "UserRegistration",
+        "importPath": "app.schemas.users",
+        "description": "app.schemas.users",
+        "isExtraImport": true,
+        "detail": "app.schemas.users",
+        "documentation": {}
+    },
+    {
+        "label": "UserRegistration",
+        "importPath": "app.schemas.users",
+        "description": "app.schemas.users",
+        "isExtraImport": true,
+        "detail": "app.schemas.users",
         "documentation": {}
     },
     {
@@ -77,6 +197,14 @@
         "description": "fastapi",
         "isExtraImport": true,
         "detail": "fastapi",
+        "documentation": {}
+    },
+    {
+        "label": "users",
+        "importPath": "app.operations",
+        "description": "app.operations",
+        "isExtraImport": true,
+        "detail": "app.operations",
         "documentation": {}
     },
     {
@@ -180,12 +308,12 @@
         "documentation": {}
     },
     {
-        "label": "test",
-        "kind": 2,
-        "importPath": "app.routers.V1.auth.auth_router",
-        "description": "app.routers.V1.auth.auth_router",
-        "peekOfCode": "def test():\n    \"\"\"this is to test if the api is working\"\"\"\n    return \"ok\"",
-        "detail": "app.routers.V1.auth.auth_router",
+        "label": "Users",
+        "kind": 6,
+        "importPath": "app.models.user_model",
+        "description": "app.models.user_model",
+        "peekOfCode": "class Users(Document):\n    id: UUID = Field(default_factory=uuid4)\n    name: str\n    email: Annotated[EmailStr, Indexed(unique=True)]\n    created: datetime = Field(default_factory=datetime.now)\n    class Settings:\n        name = \"users\"",
+        "detail": "app.models.user_model",
         "documentation": {}
     },
     {
@@ -193,7 +321,7 @@
         "kind": 5,
         "importPath": "app.routers.V1.auth.auth_router",
         "description": "app.routers.V1.auth.auth_router",
-        "peekOfCode": "router = APIRouter(prefix=\"/auth\", tags=[\"Authentication\"])\n@router.get(\"/test\")\ndef test():\n    \"\"\"this is to test if the api is working\"\"\"\n    return \"ok\"",
+        "peekOfCode": "router = APIRouter(prefix=\"/auth\", tags=[\"Authentication\"])\n@router.post(\"/register\")\nasync def register_user(user: UserRegistration):\n    \"\"\"create user endpoint\"\"\"\n    new_user = await users.create_user(user.model_dump())\n    return new_user",
         "detail": "app.routers.V1.auth.auth_router",
         "documentation": {}
     },
@@ -213,6 +341,15 @@
         "description": "app.routers.routes",
         "peekOfCode": "router = APIRouter()\n\"\"\" include the v1 routes here \"\"\"\nrouter.include_router(v1_routers.router)",
         "detail": "app.routers.routes",
+        "documentation": {}
+    },
+    {
+        "label": "UserRegistration",
+        "kind": 6,
+        "importPath": "app.schemas.users",
+        "description": "app.schemas.users",
+        "peekOfCode": "class UserRegistration(BaseModel):\n    name: str = Field(title=\"Name\")\n    email: EmailStr = Field(title=\"Email\")",
+        "detail": "app.schemas.users",
         "documentation": {}
     },
     {
@@ -265,7 +402,7 @@
         "kind": 5,
         "importPath": "app.main",
         "description": "app.main",
-        "peekOfCode": "app = FastAPI(\n    title=\"Boilerplate\",\n    summary=\"FastApi boilerplate for all project\",\n    description=\"\"\"\n    FastApi boilerplate that will include basic structure and authentication\n    \"\"\",\n    version=\"0.0.5\",\n    servers=[\n        {\n            \"url\": \"http://127.0.0.1:8000/api/v1\",",
+        "peekOfCode": "app = FastAPI(\n    title=\"Boilerplate\",\n    summary=\"FastApi boilerplate for all project\",\n    description=\"\"\"\n    FastApi boilerplate that will include basic structure and authentication\n    \"\"\",\n    version=\"0.0.6\",\n    servers=[\n        {\n            \"url\": \"http://127.0.0.1:8000/api/v1\",",
         "detail": "app.main",
         "documentation": {}
     },

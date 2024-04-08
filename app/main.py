@@ -25,7 +25,7 @@ app = FastAPI(
     description="""
     FastApi boilerplate that will include basic structure and authentication
     """,
-    version="0.0.5",
+    version="0.0.6",
     servers=[
         {
             "url": "http://127.0.0.1:8000/api/v1",
